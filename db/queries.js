@@ -19,16 +19,19 @@ async function addGame(
   );
 }
 
-async function getIndex() {
-  let { rows } = await pool.query("SELECT * FROM games");
-  const games = { ...rows };
-  rows = await pool.query("SELECT * FROM category");
-  const categories = { ...rows };
-  return { games, categories };
+async function getGames() {
+  const { rows } = await pool.query("SELECT * FROM games");
+  return rows;
+}
+
+async function getCategories() {
+  const { rows } = await pool.query("SELECT * FROM category");
+  return rows;
 }
 
 module.exports = {
   addCategory,
   addGame,
-  getIndex,
+  getGames,
+  getCategories,
 };

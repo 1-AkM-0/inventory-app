@@ -15,8 +15,8 @@ async function postGames(req, res) {
   res.redirect("/");
 }
 
-const getGames = (req, res) => {
-  res.render("games", { title: "Add game" });
-};
-
+async function getGames(req, res) {
+  const categories = await db.getCategories();
+  res.render("games", { title: "Add category", categories });
+}
 module.exports = { postGames, getGames };

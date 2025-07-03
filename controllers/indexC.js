@@ -1,8 +1,9 @@
 const db = require("../db/queries");
 
-async function getIndex() {
+async function getIndex(req, res) {
   const games = await db.getGames();
-  resizeBy.render("index", { games });
+  const categories = await db.getCategories();
+  res.render("index", { games, categories });
 }
 
 module.exports = {
