@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <% games.forEach((game) => { %>
+        <li><%=game.name%></li>
+        <li><%=game.rating%></li>
+        <% categories.forEach((category) =>{ %> <% if
+        (game.includes(category.id)) {%>
+        <p><% category.name%></p>
+
+        <%}%> <% }) %>
+        <li><%=game.price%></li>
+        <li><%=game.number_stock%></li>
+        <li><%=game.publisher%></li>
+        <li><%=game.release_date%></li>
+        <% }) %>
+      </ul>
+    </div>
+    <a href="/category/add">category</a>
+    <a href="/games/add">category</a>
+  </body>
+</html>
