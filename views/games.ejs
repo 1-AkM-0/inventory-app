@@ -9,26 +9,26 @@
   <body>
     <h1><%=title%></h1>
     <div class="form">
-      <form action="/" method="post">
+      <form action="/games/add" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" />
         <label for="rating">Rating</label>
-        <input type="number" name="rating" id="rating" />
+        <input type="number" name="rating" id="rating" step=".01" />
         <div class="categories">
           <% categories.forEach((category)=>{ %>
           <div class="category">
-            <label for="<%=category.id%>"><%=category.name%></label>
+            <label for="<%=category.category_id%>"><%=category.name%></label>
             <input
               type="checkbox"
-              name="category"
-              id="<%=category.id%>"
-              value="<%=category.id%>"
+              name="categories"
+              id="<%=category.category_id%>"
+              value="<%=category.category_id%>"
             />
           </div>
           <% })%>
         </div>
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" />
+        <input type="number" name="price" id="price" step=".01" />
         <label for="stock">Stock</label>
         <input type="number" name="stock" id="stock" />
         <label for="publisher">Publisher</label>

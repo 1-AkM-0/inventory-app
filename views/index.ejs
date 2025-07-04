@@ -11,8 +11,8 @@
         <% games.forEach((game) => { %>
         <li><%=game.name%></li>
         <li><%=game.rating%></li>
-        <% categories.forEach((category) =>{ %> <% if
-        (game.includes(category.id)) {%>
+        <% gamesAndCategories.forEach((gc) =>{ %> <% if (gc.game_id ===
+        game.game_id) {%>
         <p><% category.name%></p>
 
         <%}%> <% }) %>
