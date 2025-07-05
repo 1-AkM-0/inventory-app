@@ -1,12 +1,12 @@
 const db = require("../db/queries");
 
 async function postGames(req, res) {
-  let { name, rating, categories, price, stock, publisher, release } = req.body;
+  let { game_name, rating, categories, price, stock, publisher, release } = req.body;
   rating = parseInt(rating);
   price = parseInt(price);
   console.log(req.body);
   const { rows } = await db.newGame(
-    name,
+    game_name,
     rating,
     price,
     stock,

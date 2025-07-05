@@ -1,12 +1,12 @@
 const pool = require("./pool");
 
 async function newCategory(name) {
-  await pool.query("INSERT INTO category(name) VALUES ($1)", [name]);
+  await pool.query("INSERT INTO category(category_name) VALUES ($1)", [name]);
 }
 
 async function newGame(name, rating, price, stock, publisher, release_date) {
   const id = await pool.query(
-    "INSERT INTO games(name, rating, price, number_stock, publisher, release_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING game_id",
+    "INSERT INTO games(game_name, rating, price, number_stock, publisher, release_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING game_id",
     [name, rating, price, stock, publisher, release_date]
   );
   return id;
@@ -29,8 +29,10 @@ async function insertGameAndCategory(game_id, category_id) {
   );
 }
 
-async function getGameCategory(game_id) {
-  const { rows } = await pool.query("SELECT * FROM games_category");
+async function getGameCategory() {
+  const { rows } = await pool.query(
+    "SELECT * FROM games_category gc JOIN games g ON gc.game_id = g.game_id JOIN category c ON c.category_id = gc.category_id"
+  );
   return rows;
 }
 

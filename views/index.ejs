@@ -11,15 +11,14 @@
         <% games.forEach((game) => { %>
         <li><%=game.name%></li>
         <li><%=game.rating%></li>
-        <% gamesAndCategories.forEach((gc) =>{ %> <% if (gc.game_id ===
-        game.game_id) {%>
-        <p><% category.name%></p>
-
-        <%}%> <% }) %>
+        <%game.categories.forEach((category)=>{ %>
+        <li><%=category%></li>
+        <%})%>
         <li><%=game.price%></li>
         <li><%=game.number_stock%></li>
         <li><%=game.publisher%></li>
         <li><%=game.release_date%></li>
+        <p>----------------------------</p>
         <% }) %>
       </ul>
     </div>
